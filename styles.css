@@ -24,6 +24,10 @@ button {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -34,6 +38,8 @@ button {
 }
 
 .cell {
+  width: 100px;   /* ✅ Explicit size */
+  height: 100px;  /* ✅ Explicit size */
   background: pink;
   display: flex;
   justify-content: center;

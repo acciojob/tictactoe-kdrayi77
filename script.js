@@ -3,6 +3,7 @@ const playerInputs = document.getElementById("player-inputs");
 const gameSection = document.getElementById("game");
 const messageDiv = document.querySelector(".message");
 const cells = document.querySelectorAll(".cell");
+const restartBtn = document.getElementById("restart");
 
 let player1 = "";
 let player2 = "";
@@ -22,11 +23,11 @@ const winningCombinations = [
 ];
 
 submitBtn.addEventListener("click", () => {
-  player1 = document.querySelector("#player1").value || "Player 1";
-  player2 = document.querySelector("#player2").value || "Player 2";
+  player1 = document.getElementById("player1").value || "Player 1";
+  player2 = document.getElementById("player2").value || "Player 2";
   currentPlayer = player1;
-  playerInputs.style.display = "none";
-  gameSection.style.display = "block";
+  playerInputs.classList.add("hidden");
+  gameSection.classList.remove("hidden");
   messageDiv.textContent = `${currentPlayer}, you're up`;
 });
 
@@ -38,6 +39,12 @@ cells.forEach(cell => {
     
     if (checkWinner(currentSymbol)) {
       messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
+      gameActive = false;
+      return;
+    }
+
+    if (isDraw()) {
+      messageDiv.textContent = "It's a draw!";
       gameActive = false;
       return;
     }
@@ -54,6 +61,8 @@ cells.forEach(cell => {
   });
 });
 
+restartBtn.addEventListener("click", resetGame);
+
 function checkWinner(symbol) {
   for (let combo of winningCombinations) {
     const [a, b, c] = combo;
@@ -69,4 +78,19 @@ function checkWinner(symbol) {
     }
   }
   return false;
+}
+
+function isDraw() {
+  return [...cells].every(cell => cell.textContent !== "");
+}
+
+function resetGame() {
+  cells.forEach(cell => {
+    cell.textContent = "";
+    cell.classList.remove("taken", "winner");
+  });
+  currentPlayer = player1;
+  currentSymbol = "X";
+  gameActive = true;
+  messageDiv.textContent = `${currentPlayer}, you're up`;
 }
