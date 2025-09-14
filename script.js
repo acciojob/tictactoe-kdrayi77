@@ -1,6 +1,6 @@
 const submitBtn = document.getElementById("submit");
 const player1Input = document.querySelector("#player1");
-const player2Input = document.querySelector("#player-2");
+const player2Input = document.querySelector("#player2");
 const setupDiv = document.getElementById("setup");
 const gameDiv = document.getElementById("game");
 const messageDiv = document.querySelector(".message");
