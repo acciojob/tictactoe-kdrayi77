@@ -1,8 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 0;
-  padding: 0;
+  background-color: white;
 }
 
 .container {
@@ -10,51 +9,39 @@ body {
 }
 
 h1 {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 32px;
-  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-#player1, #player2 {
-  margin: 10px;
+#player-form input {
   padding: 8px;
-  border: 2px solid black;
-  border-radius: 3px;
+  margin: 5px;
+  border: 1px solid black;
 }
 
 #submit {
-  margin-top: 20px;
   padding: 10px 20px;
-  font-size: 16px;
-  border: 2px solid black;
+  margin-top: 10px;
+  border: 1px solid black;
   border-radius: 8px;
-  background-color: white;
   cursor: pointer;
-}
-
-.message {
-  margin: 15px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
 }
 
 .board {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
-  justify-content: center;
-  align-items: center;
   width: 300px;
   height: 300px;
   margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .cell {
   border: 1px solid black;
   background-color: pink;
-  font-size: 48px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-size: 40px;
   cursor: pointer;
 }
